@@ -10,18 +10,18 @@ COMPETITION_ID = 778
 def get_temple_data():
     url = f"https://templeosrs.com/groups/edit_group.php?id={COMPETITION_ID}"
     
-    # Retry up to 3 times
-    for _ in range(3):
+    # Retry up to 5 times
+    for _ in range(5):
         try:
             response = requests.get(url)
             response.raise_for_status()  # Raise HTTPError for bad responses
             break  # succesful
         except requests.RequestException as e:
             print(f"Error during request: {e}")
-            time.sleep(10)  # Wait for 10 seconds before retrying
+            time.sleep(100)  # Wait for 100 seconds before retrying
     
     else:
-        print("Failed to retrieve data after multiple attempts.")
+        print("Failed to retrieve data after multiple attempts. GG")
         return []
 
     match_names = re.search(r'var names = \[(.+)\]', response.text)
@@ -70,5 +70,5 @@ if __name__ == "__main__":
         for player_name in temple_data:
             update_player(player_name)
 
-        print("--ALL PLAYERS HAVE BEEN UPDATED, TAKING A 10 MIN BREAK BRB")
+        print("--ALL PLAYERS HAVE BEEN UPDATED, TAKING A 20 MIN BREAK BRB")
         time.sleep(1800)  # 20 min breaky breaky
