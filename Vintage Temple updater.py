@@ -4,14 +4,14 @@ import time
 import random
 
 COMPETITION_ID = 778
+MAX_RETRIES = 5
 # Vintage URL
 # https://templeosrs.com/groups/overview.php?id=778
 
 def get_temple_data():
     url = f"https://templeosrs.com/groups/edit_group.php?id={COMPETITION_ID}"
-    
-    # Retry up to 5 times
-    for _ in range(5):
+
+    for _ in range(MAX_RETRIES):
         try:
             response = requests.get(url)
             response.raise_for_status()  # Raise HTTPError for bad responses
@@ -43,9 +43,8 @@ def get_temple_data():
 
 def update_player(player_name):
     url = f"https://templeosrs.com/php/add_datapoint.php?player={player_name}"
-    
-    # Retry up to 3 times
-    for _ in range(3):
+
+    for _ in range(MAX_RETRIES):
         try:
             response = requests.post(url)
             response.raise_for_status()  # Raise HTTPError for bad responses
@@ -70,5 +69,5 @@ if __name__ == "__main__":
         for player_name in temple_data:
             update_player(player_name)
 
-        print("--ALL PLAYERS HAVE BEEN UPDATED, TAKING A 20 MIN BREAK BRB")
-        time.sleep(1800)  # 20 min breaky breaky
+        print("--ALL PLAYERS HAVE BEEN UPDATED, TAKING A 30 MIN BREAK BRB")
+        time.sleep(1800)  # 30 min breaky breaky
