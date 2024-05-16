@@ -6,7 +6,7 @@ import random
 ID = 778 #Default Vintage Group ID
 TYPE = "GROUP" # Default is GROUP, can change to COMPETITIVE
 MAX_RETRIES = 5 #Max retries for connection
-REFRESH_INTERVAL = 45 # Default refresh interval (seconds)
+REFRESH_INTERVAL = 15 # Default refresh interval (seconds)
 
 # Vintage URL
 # https://templeosrs.com/groups/overview.php?id=778
@@ -115,5 +115,5 @@ if __name__ == "__main__":
         for player_name in temple_data:
             update_player(player_name)
 
-        print("--ALL PLAYERS HAVE BEEN UPDATED, TAKING A 30 MIN BREAK BRB")
-        time.sleep(1800)  # 30 min breaky breaky
+        print("--ALL PLAYERS HAVE BEEN UPDATED, TAKING A 30 SEC BREAK BRB")
+        time.sleep(30)  # 30 sec breaky breaky
