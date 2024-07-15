@@ -6,7 +6,7 @@ import random
 ID = 778  # Default Vintage Group ID
 TYPE = "GROUP"  # Default is GROUP
 MAX_RETRIES = 5  # Max retries for connection
-REFRESH_INTERVAL = 15  # Default refresh interval (seconds)
+REFRESH_INTERVAL = 12  # Default refresh interval (seconds)
 
 def get_temple_data():
     url = f"https://templeosrs.com/groups/edit_group.php?id={ID}"
